@@ -406,8 +406,16 @@ CVSS.prototype.calculate = function () {
             baseScore = roundUp1(Math.min((exploitabalitySubScore + impactSubScore) * scopeCoefficient, 10));
         }
     }
-
-    return baseScore.toFixed(1);
+    
+    if (val.AV === 'P') {
+        hardware_val = 10 * 0.76;
+        baseScore = baseScore * hardware_val;
+        return baseScore.toFixed(1);
+    }
+    else {
+        return baseScore.toFixed(1);
+    }
+        
     } catch (err) {
         return err;
     }
