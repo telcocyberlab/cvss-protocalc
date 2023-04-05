@@ -408,7 +408,7 @@ CVSS.prototype.calculate = function () {
     }
     
     if (val.AV === 'P') {
-        hardware_val = 10 * 0.76;
+        hardware_val = 10/0.76;
         baseScore = baseScore * hardware_val;
         return baseScore.toFixed(1);
     }
