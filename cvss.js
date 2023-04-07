@@ -90,6 +90,7 @@ var CVSS = function (id, options) {
                 l: 'Physical',
                 d: "<b>Bad:</b> The attack requires the attacker to physically touch or manipulate the vulnerable component. Physical interaction may be brief (e.g., evil maid attack) or persistent. An example of such an attack is a cold boot attack in which an attacker gains access to disk encryption keys after physically accessing the target system. Other examples include peripheral attacks via FireWire/USB Direct Memory Access (DMA)."
             }
+	   
         },
         AC: {
             L: {
@@ -407,7 +408,8 @@ CVSS.prototype.calculate = function () {
         }
     }
     
-    if (val.AV === 'P') {
+    var isHardware  = document.getElementById("hardware-tab").classList.contains('active');
+    if (val.AV === 'P' && isHardware) {
         hardware_val = 10/7.6;
         baseScore = baseScore * hardware_val;
         return baseScore.toFixed(1);

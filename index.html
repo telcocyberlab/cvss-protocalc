@@ -72,10 +72,23 @@
         }
 		
 		
-		
 		 if (window.location.hash.substring(1).length > 0) {
             h.set(decodeURIComponent(window.location.hash.substring(1)));
         }
+
+        // Nascosti elementi nel calcolatore hardware
+        document.getElementById("cvssboardhardware").getElementsByTagName("dd")[0].style.display='none';
+        document.getElementById("cvssboardhardware").getElementsByTagName("dd")[1].style.display='none';
+        document.getElementById("cvssboardhardware").getElementsByTagName("dd")[2].style.display='none';
+
+        //Modifica label nel calcolatore hardware
+        document.querySelector("[for=cvssboardhardwareAVP]").innerHTML='<i class="AVP"></i> Hardware';
+        
+        //POP HOVER - modifica descrizione del contenuto hardware
+        var parent = document.getElementById("cvssboardhardware").getElementsByTagName("dd")[3]
+        var small = parent.getElementsByTagName("small");
+        small[0].innerHTML = "<b>Hardware:</b> ";
+
     </script>
 
 </body>
